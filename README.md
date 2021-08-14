@@ -12,7 +12,7 @@ Keyboard input is collected using `pynput` and the TUI uses
 
 # Usage
 
-Test key individually or several at a time. `Shift-Q` quits 
+Test keys individually or several at a time. `Shift-q` quits 
 the program and returns to the terminal. If, for some reason, 
 the program ends without the curses backend calling `endwin()`,
 you can fix your terminal prompt by running `reset` in your terminal.
