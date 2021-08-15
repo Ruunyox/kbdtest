@@ -21,9 +21,6 @@ def readlist(filename):
     rows = [x.strip() for x in rows if x.strip()]
     return list(rows)
 
-with open("requirements.txt") as f:
-    requirements = f.read().splitlines()
-
 setup(
     name=NAME,
     version=VERSION,
@@ -32,7 +29,7 @@ setup(
     url='https://github.com/ruunyox/kdbtest',
     license='MIT',
     packages=find_packages(),
-    install_requirements=requirements,
+    install_requires=['numpy','pynput'],
     zip_safe=True,
     cmdclass={
         'install': InstallScript
