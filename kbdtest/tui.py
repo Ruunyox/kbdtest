@@ -72,11 +72,16 @@ class KeyboardDisplay():
         sizex int
             Number of columns of the current executing terminal window
         """
+        self.ky = 6
+        self.kx = 17
+        self.bky = 7
+        self.bkx = 18
+        self.spacey = 2
+        self.spacex = 4
 
-        if sizey < 20 or sizex < 70:
-            raise RuntimeError("Terminal is too small to draw the graphic keyboard.")
+        if sizey < self.bky*self.spacey + 4 or sizex < self.bkx*self.spacex + 1:
             curses.endwin()
-            exit()
+            raise RuntimeError("Terminal is too small to draw the graphic keyboard.")
 
         self.draw_layout = np.array(
                       [["ESC", "F1 ", "F2 ", "F3 ", "F4 ", "F5 ", "F6 ", "F7 ", "F8 ", "F9 ", "F10", "F11", "F12", "   ", "PRT", "SCL", "PS "],
@@ -87,17 +92,11 @@ class KeyboardDisplay():
                        ["FN" , "CTR", "ALT", "CMD", "   ", "   ", "SPC", "   ", "   ", "CMD", "ALT", "   ", "   ", "   ", "LFT", "DN ", "RGT"]]
                       )
         self.interface = KeyboardInterface()
-        ky = 6
-        kx = 17
-        bky = 7
-        bkx = 18
-        self.spacey = 2
-        self.spacex = 4
-        self.window = curses.newwin(ky*self.spacey, kx*self.spacex, int((sizey - ky*self.spacey)/2), int((sizex - kx*self.spacex)/2))
-        self.window_border = curses.newwin(bky*self.spacey, bkx*self.spacex, int((sizey - bky*self.spacey)/2), int((sizex - bkx*self.spacex)/2))
+        self.window = curses.newwin(self.ky*self.spacey, self.kx*self.spacex, int((sizey - self.ky*self.spacey)/2), int((sizex - self.kx*self.spacex)/2))
+        self.window_border = curses.newwin(self.bky*self.spacey, self.bkx*self.spacex, int((sizey - self.bky*self.spacey)/2), int((sizex - self.bkx*self.spacex)/2))
         self.window.bkgd(curses.color_pair(1))
         self.window_border.bkgd(curses.color_pair(3))
-        self.keywindow = curses.newwin(1, (kx*self.spacex), int((sizey - ky*self.spacey)/2)-3, int((sizex - kx*self.spacex)/2)-1)
+        self.keywindow = curses.newwin(1, (self.kx*self.spacex), int((sizey - self.ky*self.spacey)/2)-3, int((sizex - self.kx*self.spacex)/2)-1)
 
 
     def right_pad_string(self, string):
