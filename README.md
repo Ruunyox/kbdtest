@@ -10,8 +10,8 @@ It was originally developed for testing DIY keyboard PCBs prior to final
 assembly.
 Keyboard input is collected using `pynput` and the TUI uses
 `ncurses`. This program was inspired by the utilities
-[here](https://keyboardchecker.com/). Currently, this program
-is only used  
+[here](https://keyboardchecker.com/). Currently, this program has not been
+tested for Windows users. 
 
 # Usage
 
