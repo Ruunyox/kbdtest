@@ -42,7 +42,6 @@ class KeyboardInterface():
         from the listener to a tuple of indices for the corresponding visual string in in the
         graphic keyboard layout matrix.
         """
-        print(self.read_layout.shape)
         for layer in self.read_layout:
             for i, row in enumerate(layer):
                 for j, col in enumerate(layer[i]):
